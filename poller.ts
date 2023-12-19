@@ -20,8 +20,8 @@ async function getCourses() {
 
 async function poll() {
   const term = '202302';
-  const subject = 'COMP';
-  const subjectNumber = '4304';
+  const subject = 'MATH';
+  const subjectNumber = '2000';
 
   const url = `https://selfservice.mun.ca/admit/bwskfcls.P_GetCrse?term_in=${term}&sel_subj=dummy&sel_subj=${subject}&SEL_CRSE=${subjectNumber}&SEL_TITLE=&BEGIN_HH=0&BEGIN_MI=0&BEGIN_AP=a&SEL_DAY=dummy&SEL_PTRM=dummy&END_HH=0&END_MI=0&END_AP=a&SEL_CAMP=dummy&SEL_SCHD=dummy&SEL_SESS=dummy&SEL_INSTR=dummy&SEL_INSTR=%25&SEL_ATTR=dummy&SEL_ATTR=%25&SEL_LEVL=dummy&SEL_LEVL=%25&SEL_INSM=dummy&sel_dunt_code=&sel_dunt_unit=&call_value_in=&rsts=dummy&crn=dummy&path=1&SUB_BTN=View Sections`;
 
