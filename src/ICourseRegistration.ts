@@ -23,4 +23,11 @@ interface ICourseRegistration {
   location: string;
 }
 
-export { ICourseRegistration };
+interface IPollResult {
+  crn: string;
+  subj: string;
+  crse: string;
+  canRegister: boolean;
+}
+
+export { ICourseRegistration, IPollResult };
