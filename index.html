@@ -1,0 +1,314 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/transitional.dtd">
+<HTML lang="en">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<LINK REL="stylesheet" HREF="/css/web_defaultapp.css" TYPE="text/css">
+<LINK REL="stylesheet" HREF="/css/web_defaultprint.css" TYPE="text/css" media="print">
+<title>Look-Up Class to Add: </title>
+<meta http-equiv="Content-Script-Type" name="Default_Script_Language" content="text/javascript">
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!-- Hide JavaScript from older browsers 
+window.onunload = function() {submitcount=0;}
+var submitcount=0;
+function checkSubmit() {
+if (submitcount == 0)
+   {
+   submitcount++;
+   return true;
+   }
+else
+   {
+alert("Your changes have already been submitted.");
+   return false;
+   }
+}
+//  End script hiding -->
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!-- Hide JavaScript from older browsers 
+//  Function to open a window
+function windowOpen(window_url) {
+   helpWin = window.open(window_url,'','toolbar=yes,status=no,scrollbars=yes,menubar=yes,resizable=yes,directories=no,location=no,width=350,height=400');
+   if (document.images) { 
+       if (helpWin) helpWin.focus()
+   }
+}
+//  End script hiding -->
+</SCRIPT>
+</head>
+<body>
+<div id="headerImage">
+<div id="MUNBannerContainer"> 
+    <div id="MUNLogo" onclick="window.location.href='http://www.mun.ca'"> 
+    </div> 
+    <div id="MUNBanner"> 
+        <div id="MUNCampus"> 
+            <span>St. John's Campus</span> 
+            <span>Grenfell Campus</span> 
+            <span>Marine Institute</span> 
+            <span>Harlow Campus</span> 
+            <span>Online Learning</span> 
+        </div> 
+        <div id="MUNBannerText" > 
+            Memorial Self-Service
+             </div> 
+    </div> 
+</div>
+<br></div>
+<div class="headerwrapperdiv">
+<div class="pageheaderdiv1">
+<a href="#main_content" onMouseover="window.status='Go to Main Content'; return true" onMouseout="window.status=''; return true" OnFocus="window.status='Go to Main Content'; return true" onBlur="window.status=''; return true" class="skiplinks">Go to Main Content</a>
+</DIV><div class="headerlinksdiv">
+<SPAN class="pageheaderlinks2">
+<map name="Module_Navigation_Links_H" title="Module Navigation Links">
+<p>
+<a href="#skip_Module_Navigation_Links_H" onMouseover="window.status='Skip Module Navigation Links'; return true" onMouseout="window.status=''; return true" onFocus="window.status='Skip Module Navigation Links'; return true" onBlur="window.status=''; return true"  class="skiplinks">Skip Module Navigation Links</a>
+<table  CLASS="plaintable" SUMMARY="This is main table for displaying Tab Items."
+                          WIDTH="100%" cellSpacing=0 cellPadding=0 border=0>
+<tr>
+<TD CLASS="pldefault">
+<table  CLASS="plaintable" SUMMARY="This table displays Tab Items."
+                 cellSpacing=0 cellPadding=0 border=0>
+<tr>
+<td class="taboff" height=22>
+<a href="/admit/twbkwbis.P_GenMenu?name=bmenu.P_MainMnu" onMouseover="window.status='Main Menu'; return true" onMouseout="window.status=''; return true" onFocus="window.status='Main Menu'; return true" onBlur="window.status=''; return true" >Main Menu</a>
+</TD>
+<TD class="bgtaboff" height=22 vAlign="top" align="right">
+<img src="/regoff/ban8/wtlgifs/web_tab_corner_right.gif" alt="Tab Corner Right" CLASS="headerImg" TITLE="Tab Corner Right"  NAME="web_tab_corner_right" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=20 WIDTH=8 />
+</TD>
+<td class="tabon"  height=22>
+<a href="/admit/twbkwbis.P_GenMenu?name=bmenu.P_StuMainMnu" onMouseover="window.status='Student Main Menu'; return true" onMouseout="window.status=''; return true" onFocus="window.status='Student Main Menu'; return true" onBlur="window.status=''; return true" >Student Main Menu</a>
+</TD>
+<TD class="bgtabon"  height=22 vAlign="top" align="right">
+<img src="/regoff/ban8/wtlgifs/web_tab_corner_right.gif" alt="Tab Corner Right" CLASS="headerImg" TITLE="Tab Corner Right"  NAME="web_tab_corner_right" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=20 WIDTH=8 />
+</TD>
+<td class="taboff" height=22>
+<a href="/admit/twbkwbis.P_GenMenu?name=pmenu.P_MainMnu" onMouseover="window.status='Employee Main Menu'; return true" onMouseout="window.status=''; return true" onFocus="window.status='Employee Main Menu'; return true" onBlur="window.status=''; return true" >Employee Services</a>
+</TD>
+<TD class="bgtaboff" height=22 vAlign="top" align="right">
+<img src="/regoff/ban8/wtlgifs/web_tab_corner_right.gif" alt="Tab Corner Right" CLASS="headerImg" TITLE="Tab Corner Right"  NAME="web_tab_corner_right" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=20 WIDTH=8 />
+</TD>
+</tr>
+</table>
+</TD>
+</tr>
+<tr>
+<TD class="bgtabon" width="100%" colSpan=2><img src="/regoff/ban8/wtlgifs/web_transparent.gif" alt="Transparent Image" CLASS="headerImg" TITLE="Transparent Image"  NAME="web_transparent" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=3 WIDTH=10 /></TD></tr></table>
+</map>
+</SPAN>
+<a name="skip_Module_Navigation_Links_H"></a>
+</DIV>
+<table  CLASS="plaintable" SUMMARY="This table displays Menu Items and Banner Search textbox."
+         WIDTH="100%">
+<tr>
+<TD CLASS="pldefault">
+<div class="headerlinksdiv2">
+<form action="/admit/twbksrch.P_ShowResults" method="post">
+Search
+<SPAN class="fieldlabeltextinvisible"><LABEL for=keyword_in_id><SPAN class="fieldlabeltext">Search</SPAN></LABEL></SPAN>
+<input type="text" name="KEYWRD_IN" size="20" maxlength="65" ID="keyword_in_id" />
+<input type="submit" value="Go" />
+</form>
+</div>
+</TD>
+<TD CLASS="pldefault"><p class="rightaligntext" /p>
+<SPAN class="pageheaderlinks">
+<a href="/admit/twbkwbis.P_GenMenu?name=bmenu.P_RegMnu"  class="submenulinktext2" id="ssbbackurl">RETURN TO MENU</a>
+|
+<a href="/admit/twbksite.P_DispSiteMap?menu_name_in=bmenu.P_MainMnu&amp;depth_in=2&amp;columns_in=3" accesskey="2" class="submenulinktext2">SITE MAP</a>
+|
+<a href="/regoff/ban8/webhelp/getcr.htm" accesskey="H" onClick="popup = window.open('/regoff/ban8/webhelp/getcr.htm', 'PopupPage','height=500,width=450,scrollbars=yes,resizable=yes'); return false" target="_blank" onMouseOver="window.status='';  return true" onMouseOut="window.status=''; return true"onFocus="window.status='';  return true" onBlur="window.status=''; return true"  class="submenulinktext2">HELP</a>
+|
+<a href="twbkwbis.P_Logout" accesskey="3" class="submenulinktext2">EXIT</a>
+</span>
+</TD>
+</tr>
+</table>
+</DIV>
+<div class="pagetitlediv">
+<table  CLASS="plaintable" SUMMARY="This table displays title and static header displays."
+   WIDTH="100%">
+<tr>
+<TD CLASS="pldefault">
+<h2>Look-Up Class to Add:</h2>
+</TD>
+<TD CLASS="pldefault">
+&nbsp;
+</TD>
+<TD CLASS="pldefault"><p class="rightaligntext" /p>
+<div class="staticheaders">
+2023-2024 Winter<br>
+Dec 18, 2023 11:44 pm<br>
+</div>
+</TD>
+</tr>
+<tr>
+<TD class="bg3" width="100%" colSpan=3><img src="/regoff/ban8/wtlgifs/web_transparent.gif" alt="Transparent Image" CLASS="headerImg" TITLE="Transparent Image"  NAME="web_transparent" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=3 WIDTH=10 /></TD>
+</tr>
+</table>
+<a name="main_content"></a>
+</DIV>
+<div class="pagebodydiv">
+<!--  ** END OF twbkwbis.P_OpenDoc **  -->
+<form action="/admit/bwskfreg.P_AltPin1" method="post" onSubmit="return checkSubmit()">
+<input type="hidden" name="crn" value="dummy" />
+<input type="hidden" name="rsts" value="dummy" />
+<div class="infotextdiv"><table  CLASS="infotexttable" SUMMARY="This layout table contains information that may be helpful in understanding the content and functionality of this page.  It could be a brief set of instructions, a description of error messages, or other special information."><tr><td CLASS="indefault"><SPAN class="infotext"> <b>To register for courses click in the box on the left of the CRN and press either Register or Add to Worksheet button.  Both of these buttons will bring you to the Add/Drop Course page where you can continue with the registration process.</b><p> <b>If registration is not available to you at this time, the registration options will not be displayed, nor will the check boxes.</b><p>
+
+<br><br>
+
+<font color=red><b><i>Please ensure that when you register for a course section it is associated with the proper campus. For example, if you are attending the Grenfell campus then do not select courses from the St. John’s campus</b></i><p></SPAN></td></tr></table><p></DIV>
+<input type="hidden" name="TERM_IN" value="202302" />
+<input type="hidden" name="sel_crn" value="dummy" />
+<input type="hidden" name="assoc_term_in" value="dummy" />
+<input type="hidden" name="ADD_BTN" value="dummy" />
+<table  CLASS="datadisplaytable" SUMMARY="This layout table is used to present the sections found" width="100%"><caption class="captiontext">Sections Found</caption>
+<tr>
+<th colspan="26" CLASS="ddlabel" scope="row" ><SPAN class="fieldOrangetextbold">Campus: St. John's</SPAN></th>
+</tr>
+<tr>
+<th colspan="26" CLASS="ddlabel" scope="row" ><SPAN class="fieldOrangetextbold">Full Term: January 4, 2024 to April 19, 2024</SPAN></th>
+</tr>
+<tr>
+<th colspan="26" CLASS="ddtitle" scope="colgroup" >Biology</th>
+</tr>
+<tr>
+<th CLASS="ddheader" scope="col" >Select</th>
+<th CLASS="ddheader" scope="col" ><ACRONYM title = "Course Reference Number">CRN</ACRONYM></th>
+<th CLASS="ddheader" scope="col" ><ABBR title = Subject>Subj</ABBR></th>
+<th CLASS="ddheader" scope="col" ><ABBR title = Course>Crse</ABBR></th>
+<th CLASS="ddheader" scope="col" ><ABBR title = Section>Sec</ABBR></th>
+<th CLASS="ddheader" scope="col" ><ABBR title = Campus>Cmp</ABBR></th>
+<th CLASS="ddheader" scope="col" ><ABBR title = "Credit Hours">Cred</ABBR></th>
+<th CLASS="ddheader" scope="col" >Title</th>
+<th CLASS="ddheader" scope="col" >Days</th>
+<th CLASS="ddheader" scope="col" >Time</th>
+<th CLASS="ddheader" scope="col" >Inst Meth</th>
+<th CLASS="ddheader" scope="col" ><ABBR title = "Section Capacity">Cap</ABBR></th>
+<th CLASS="ddheader" scope="col" ><ABBR title = "Section Actual">Act</ABBR></th>
+<th CLASS="ddheader" scope="col" ><ABBR title = "Section Remaining">Rem</ABBR></th>
+<th CLASS="ddheader" scope="col" ><ABBR title = "Waitlist Capacity">WL Cap</ABBR></th>
+<th CLASS="ddheader" scope="col" ><ABBR title = "Waitlist Actual">WL Act</ABBR></th>
+<th CLASS="ddheader" scope="col" ><ABBR title = "Waitlist Remaining">WL Rem</ABBR></th>
+<th CLASS="ddheader" scope="col" ><ABBR title = "Crosslist Capacity">XL Cap</ABBR></th>
+<th CLASS="ddheader" scope="col" ><ABBR title = "Crosslist Actual">XL Act</ABBR></th>
+<th CLASS="ddheader" scope="col" ><ABBR title = "Crosslist Remaining">XL Rem</ABBR></th>
+<th CLASS="ddheader" scope="col" >Instructor</th>
+<th CLASS="ddheader" scope="col" >Date (<ABBR title = "month month">MM</ABBR>/<ABBR title = "day day">DD</ABBR>)</th>
+<th CLASS="ddheader" scope="col" >Location</th>
+<th CLASS="ddheader" scope="col" >Attribute</th>
+</tr>
+<tr>
+<TD CLASS="dddefault">
+<input type="checkbox" name="sel_crn" value="20173 202302" ID="action_id1" />
+<LABEL for=action_id1><SPAN class="fieldlabeltextinvisible">add to worksheet</SPAN></LABEL>
+<input type="hidden" name="assoc_term_in" value="202302" />
+</TD>
+<td CLASS="dddefault"><a href="/admit/bwckschd.p_disp_listcrse?term_in=202302&amp;subj_in=BIOL&amp;crse_in=3630&amp;crn_in=20173" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">20173</a></td>
+<td CLASS="dddefault">BIOL</td>
+<td CLASS="dddefault">3630</td>
+<td CLASS="dddefault">001</td>
+<td CLASS="dddefault">1</td>
+<td CLASS="dddefault">3.000</td>
+<td CLASS="dddefault">Freshwater Biology</td>
+<td CLASS="dddefault">MTR</td>
+<td CLASS="dddefault">01:00 pm-01:50 pm</td>
+<td CLASS="dddefault">IP</td>
+<td CLASS="dddefault">30</td>
+<td CLASS="dddefault">29</td>
+<td CLASS="dddefault">1</td>
+<td CLASS="dddefault">10</td>
+<td CLASS="dddefault">0</td>
+<td CLASS="dddefault">10</td>
+<td CLASS="dddefault">0</td>
+<td CLASS="dddefault">0</td>
+<td CLASS="dddefault">0</td>
+<td CLASS="dddefault">(<ABBR title= "Primary">P</ABBR>)Kathryn Hargan</td>
+<td CLASS="dddefault">01/04-04/19</td>
+<td CLASS="dddefault">SN 4063</td>
+<td CLASS="dddefault">&nbsp;</td>
+</tr>
+</TD>
+</tr>
+<tr>
+<TD CLASS="dddefault">
+<input type="checkbox" name="sel_crn" value="20204 202302" ID="action_id3" />
+<LABEL for=action_id3><SPAN class="fieldlabeltextinvisible">add to worksheet</SPAN></LABEL>
+<input type="hidden" name="assoc_term_in" value="202302" />
+</TD>
+<td CLASS="dddefault"><a href="/admit/bwckschd.p_disp_listcrse?term_in=202302&amp;subj_in=BIOL&amp;crse_in=3630&amp;crn_in=20204" onMouseOver="window.status='Detail';  return true" onFocus="window.status='Detail';  return true" onMouseOut="window.status='';  return true"onBlur="window.status='';  return true">20204</a></td>
+<td CLASS="dddefault">BIOL</td>
+<td CLASS="dddefault">3630</td>
+<td CLASS="dddefault">002</td>
+<td CLASS="dddefault">1</td>
+<td CLASS="dddefault">0.000</td>
+<td CLASS="dddefault">Laboratory</td>
+<td CLASS="dddefault">F</td>
+<td CLASS="dddefault">02:00 pm-04:50 pm</td>
+<td CLASS="dddefault">IP</td>
+<td CLASS="dddefault">30</td>
+<td CLASS="dddefault">29</td>
+<td CLASS="dddefault">1</td>
+<td CLASS="dddefault">0</td>
+<td CLASS="dddefault">0</td>
+<td CLASS="dddefault">0</td>
+<td CLASS="dddefault">0</td>
+<td CLASS="dddefault">0</td>
+<td CLASS="dddefault">0</td>
+<td CLASS="dddefault">(<ABBR title= "Primary">P</ABBR>)Kathryn Hargan</td>
+<td CLASS="dddefault">01/04-04/19</td>
+<td CLASS="dddefault">CSF 2331</td>
+<td CLASS="dddefault">&nbsp;</td>
+</tr>
+</TD>
+</tr>
+</table>
+<br />
+<input type="submit" name="ADD_BTN" value="Register" />
+<input type="submit" name="ADD_BTN" value="Add to WorkSheet" />
+<input type="submit" name="ADD_BTN" value="New Search" />
+</form>
+
+<!--  ** START OF twbkwbis.P_CloseDoc **  -->
+<table  CLASS="plaintable" SUMMARY="This is table displays line separator at end of the page."
+                                             WIDTH="100%" cellSpacing=0 cellPadding=0 border=0><tr><TD class="bgtabon" width="100%" colSpan=2><img src="/regoff/ban8/wtlgifs/web_transparent.gif" alt="Transparent Image" CLASS="headerImg" TITLE="Transparent Image"  NAME="web_transparent" HSPACE=0 VSPACE=0 BORDER=0 HEIGHT=3 WIDTH=10 /></TD></tr></table>
+<a href="#top" onMouseover="window.status='Skip to top of page'; return true" onMouseout="window.status=''; return true" OnFocus="window.status='Skip to top of page'; return true" onBlur="window.status=''; return true" class="skiplinks">Skip to top of page</a>
+</DIV>
+<div class="footerbeforediv">
+
+</DIV>
+<div class="footerlinksdiv">
+<SPAN class="pagefooterlinks">
+<map name="Look-Up_Class_to_Add:__Links_F" title="Look-Up Class to Add:  Links">
+<p>
+<a href="#skip_Look-Up_Class_to_Add:__Links_F" onMouseover="window.status='Skip Look-Up Class to Add:  Links'; return true" onMouseout="window.status=''; return true" onFocus="window.status='Skip Look-Up Class to Add:  Links'; return true" onBlur="window.status=''; return true"  class="skiplinks">Skip Look-Up Class to Add:  Links</a>
+<P>[ <a href="/admit/bwskfshd.P_CrseSchd">Student Schedule by Day & Time</a>
+ | <a href="/admit/bwskfshd.P_CrseSchdDetl">Student Detail Schedule</a>
+ ]
+</map>
+</SPAN>
+<a name="skip_Look-Up_Class_to_Add:__Links_F"></a>
+</DIV>
+<div class="footerafterdiv">
+
+</DIV>
+<div class="globalafterdiv">
+
+</DIV>
+<div class="globalfooterdiv">
+
+</DIV>
+<div class="pagefooterdiv">
+<SPAN class="releasetext">Release: 8.7.2.4</SPAN>
+</DIV>
+<div class="poweredbydiv">
+</DIV>
+<DIV class="div1"></DIV>
+<DIV class="div2"></DIV>
+<DIV class="div3"></DIV>
+<DIV class="div4"></DIV>
+<DIV class="div5"></DIV>
+<DIV class="div6"></DIV>
+<div class="banner_copyright"> <br><h5>© 2023 Ellucian Company L.P. and its affiliates.<br></h5></div>
+</body>
+</html>
