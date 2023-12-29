@@ -1,90 +1,104 @@
-import axios from 'axios';
-import * as cheerio from 'cheerio';
-import { ICourseRegistration, IPollResult } from './ICourseRegistration';
-import { sendEmail } from './send-email';
+import { readFileSync } from 'fs';
+import puppeteer, { Page } from 'puppeteer';
+import * as YAML from 'yaml';
+import { ICourseRegistration } from './ICourseRegistration';
 
-async function fetchData(url: string, cookie: string) {
-  const response = await axios.get(url, {
-    headers: {
-      Cookie: cookie,
-    },
-    withCredentials: true,
-  });
-  return response.data;
-}
+type Config = {
+  username: string;
+  password: string;
+  courses: Course[];
+  term: string;
+  email: string;
+  resendApiKey: string;
+};
 
-function parseData(html: string, subject: string, subjectNumber: string) {
-  function parseHtml() {
-    let $ = cheerio.load(html);
+type Course = {
+  crn: string;
+  subject: string;
+  subjectNumber: string;
+};
 
-    let data = [] as ICourseRegistration[];
-
-    $('tr').each(function () {
-      let row = $(this);
-      let rowData = {} as ICourseRegistration;
-
-      rowData['crn'] = row.find('a').first().text();
-      rowData['subj'] = row.find('td').eq(2).text();
-      rowData['crse'] = row.find('td').eq(3).text();
-      rowData['sec'] = row.find('td').eq(4).text();
-      rowData['cmp'] = row.find('td').eq(5).text();
-      rowData['cred'] = row.find('td').eq(6).text();
-      rowData['title'] = row.find('td').eq(7).text();
-      rowData['days'] = row.find('td').eq(8).text();
-      rowData['time'] = row.find('td').eq(9).text();
-      rowData['instMeth'] = row.find('td').eq(10).text();
-      rowData['cap'] = parseInt(row.find('td').eq(11).text());
-      rowData['act'] = parseInt(row.find('td').eq(12).text());
-      rowData['rem'] = parseInt(row.find('td').eq(13).text());
-      rowData['wlCap'] = parseInt(row.find('td').eq(14).text());
-      rowData['wlAct'] = parseInt(row.find('td').eq(15).text());
-      rowData['wlRem'] = parseInt(row.find('td').eq(16).text());
-      rowData['xlCap'] = parseInt(row.find('td').eq(17).text());
-      rowData['xlAct'] = parseInt(row.find('td').eq(18).text());
-      rowData['xlRem'] = parseInt(row.find('td').eq(19).text());
-      rowData['instructor'] = row.find('td').eq(20).text();
-      rowData['date'] = row.find('td').eq(21).text();
-      rowData['location'] = row.find('td').eq(22).text();
-
-      data.push(rowData);
-    });
-    return data;
-  }
-
-  function processCourses(data: ICourseRegistration[]) {
-    const availableCourses = data
-      .filter((datum) => datum.subj === subject && datum.crse === subjectNumber)
-      .map((datum) => {
-        const numberOfSeatsLeft = datum.cap - datum.act;
-        const canRegister =
-          numberOfSeatsLeft > 0 && datum.title !== 'Laboratory';
-        return {
-          crn: datum.crn,
-          subj: datum.subj,
-          crse: datum.crse,
-          canRegister,
-        };
-      });
-
-    return availableCourses;
-  }
-  const data = parseHtml();
-  return processCourses(data) as IPollResult[];
-}
-
-async function handleRegistration(
-  pollResult: IPollResult,
-  email: string,
+async function scrapeTableData(
+  page: Page,
   subject: string,
-  subjectNumber: string
-) {
-  if (pollResult.canRegister) {
-    const emailId = await sendEmail(email, subject, subjectNumber);
-    if (emailId) {
-      console.log(`Email has been sent to ${email}`);
-    }
-    return;
-  }
+  subject_number: string
+): Promise<ICourseRegistration[]> {
+  const data = await page.evaluate(() => {
+    const rows = Array.from(document.querySelectorAll('table tr'));
+    return rows.map((row) => {
+      const cells = Array.from(row.querySelectorAll('td'));
+      function parseToInt(item: string | null) {
+        return parseInt(item as string);
+      }
+      return {
+        crn: cells[1]?.textContent,
+        subj: cells[2]?.textContent,
+        crse: cells[3]?.textContent,
+        sec: cells[4]?.textContent,
+        cmp: cells[5]?.textContent,
+        cred: cells[6]?.textContent,
+        title: cells[7]?.textContent,
+        days: cells[8]?.textContent,
+        time: cells[9]?.textContent,
+        instMeth: cells[10]?.textContent,
+        cap: parseToInt(cells[11]?.textContent),
+        act: parseToInt(cells[12]?.textContent),
+        rem: parseToInt(cells[13]?.textContent),
+        wlCap: parseToInt(cells[14]?.textContent),
+        wlAct: parseToInt(cells[15]?.textContent),
+        wlRem: parseToInt(cells[16]?.textContent),
+        xlCap: parseToInt(cells[17]?.textContent),
+        xlAct: parseToInt(cells[18]?.textContent),
+        xlRem: parseToInt(cells[19]?.textContent),
+        instructor: cells[20]?.textContent,
+        date: cells[21]?.textContent,
+        location: cells[22]?.textContent,
+      };
+    });
+  });
+  return data.filter(
+    (d) => d.subj == subject && d.crse == subject_number
+  ) as ICourseRegistration[];
 }
 
-export { fetchData, handleRegistration, parseData };
+async function login(
+  username: string,
+  password: string,
+  callback: (page: Page) => void
+): Promise<Page> {
+  const selfServiceLogin = `https://login.mun.ca/cas/login?service=https%3A%2F%2Fselfservice.mun.ca%2Fadmit%2F`;
+  const browser = await puppeteer.launch({ headless: true });
+  const page = await browser.newPage();
+  await page.goto(selfServiceLogin);
+  await page.type('#username', username);
+  await page.type('#password', password);
+  await page.click('.btn.btn-login.btn-block');
+  await page.waitForNavigation();
+  await callback(page);
+  await page.close();
+  await browser.close();
+  return page;
+}
+
+async function canRegister(
+  page: Page,
+  subject: string,
+  subject_number: string
+) {
+  const courses = await scrapeTableData(page, subject, subject_number);
+  for (const course of courses) {
+    const canRegister = course.cap - course.act > 0;
+    if (canRegister) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function getConfig(): Config {
+  const file = readFileSync('./config.yml', 'utf8');
+  const config: Config = YAML.parse(file);
+  return config;
+}
+
+export { canRegister, getConfig, login };

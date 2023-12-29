@@ -1,13 +1,10 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import * as dotenv from 'dotenv';
-dotenv.config();
-
 async function sendEmail(
   email: string,
   subject: string,
-  subjectNumber: string
+  subjectNumber: string,
+  emailApiKey: string
 ) {
-  const emailApiKey = process.env.EMAIL_API_KEY;
   const config: AxiosRequestConfig = {
     headers: {
       Authorization: `Bearer ${emailApiKey}`,
