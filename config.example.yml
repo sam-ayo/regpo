@@ -1,0 +1,12 @@
+username: ""
+password: ""
+courses:
+- crn: "" # Course CRN on self service
+  subject: "" # subject name for COMP
+  subjectNumber: "" # Course number for example 4304
+- crn: ""
+  subject: ""
+  subjectNumber: ""
+term: "" # For example for courses in winter 2024 or Fall 2023 term will be 202302 202301 respectively
+email: ""
+resendApiKey: ""

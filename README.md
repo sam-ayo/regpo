@@ -1,3 +1,4 @@
-# Course Registration Poller for after waitlist has been dropped
+# Course Registration Checker to check courses for after waitlist has been dropped
 
-I am polling every 50ms which is about 2500req/day
+After cloning create a `config.yml` file with the same content as `config.example.yml` and input your own values.
+
