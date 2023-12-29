@@ -5,3 +5,5 @@ After cloning create a `config.yml` file with the same content as `config.exampl
 Create a [Resend](https://resend.com/overview) account
 
 Input your resend api key into the `config.yml`
+
+Run `npm start` to start the job
