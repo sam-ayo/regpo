@@ -2,8 +2,8 @@
 
 After cloning, create a `config.yml` file with the same content as `config.example.yml` and input your own values.
 
-Create a Resend account.
+Create a [Resend](https://resend.com/overview)account.
 
-Input your [Resend](https://resend.com/overview) API key into the `config.yml`.
+Input your [Resend API key](https://resend.com/api-keys)into the `config.yml`.
 
 Run `npm start` to start the job."
