@@ -6,4 +6,4 @@ Create a [Resend](https://resend.com/overview) account.
 
 Input your [Resend API key](https://resend.com/api-keys) into the `config.yml`.
 
-Run `npm start` to start the job."
+Run `npm start` to start the job.
