@@ -3,4 +3,5 @@ target
 node_modules
 res.txt
 config.yml
+config.toml
 .DS_Store
