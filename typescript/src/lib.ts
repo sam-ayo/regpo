@@ -76,7 +76,6 @@ async function login(
   await page.waitForNavigation();
   await callback(page);
   await page.close();
-  await browser.close();
   return page;
 }
 
@@ -102,3 +101,5 @@ function getConfig(): Config {
 }
 
 export { canRegister, getConfig, login };
+
+

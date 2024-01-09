@@ -1,0 +1,12 @@
+[package]
+name = "regpo-rust"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+headless_chrome = {git = "https://github.com/atroche/rust-headless-chrome", features = ["fetch"]}
+serde = "1.0.195"
+toml = "0.8.8"
+yaml-rust = "0.4.5"

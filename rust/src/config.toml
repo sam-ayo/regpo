@@ -1,0 +1,14 @@
+password = "6503Asa6503Asa....." # enter your mun password here
+username = "saadeoye" # enter your mun username here
+term = "202302" # enter the term here, for example, for fall 2022, enter in "202201"
+
+
+[[courses]] # include as many of these as you want to check
+crn = "98133" # enter course crn here, like 123456
+number = "2600" # enter course number here, like 2001
+subject = "BUSI" # enter subject here, like COMP
+
+[[courses]] 
+crn = "98322" # enter course crn here, like 123456
+number = "4304" # enter course number here, like 2001
+subject = "COMP" # enter subject here, like COMP

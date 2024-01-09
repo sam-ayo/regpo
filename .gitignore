@@ -1,0 +1,6 @@
+target
+.env
+node_modules
+res.txt
+config.yml
+.DS_Store

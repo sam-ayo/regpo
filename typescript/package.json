@@ -16,7 +16,8 @@
     "puppeteer": "^21.6.1",
     "resend": "^2.0.0",
     "typescript": "^5.3.3",
-    "yaml": "^2.3.4"
+    "yaml": "^2.3.4",
+    "yamun": "^0.1.1"
   },
   "devDependencies": {
     "@types/node-schedule": "^2.1.5"
