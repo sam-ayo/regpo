@@ -5,3 +5,5 @@ res.txt
 config.yml
 config.toml
 .DS_Store
+course_registration_db
+test
