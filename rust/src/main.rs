@@ -3,8 +3,8 @@ use std::error::Error;
 use std::fs;
 use std::str;
 use std::sync::Arc;
+use std::time;
 pub mod send_notification;
-use clokwerk::Interval::*;
 use clokwerk::{Scheduler, TimeUnits};
 use course_registration::RegistrationDetails;
 use dotenv::dotenv;
@@ -114,19 +114,12 @@ fn course_details_changed(capacity: u8, actual: u8) -> Result<(), Box<dyn Error>
         println!("{:?}", decoded);
     }
 
-    // for data in db.iter() {
-    //     if let Ok((k, v))= data {
-    //         let value = String::from_utf8(v.to_vec())?;
-    //         let key = String::from_utf8(k.to_vec())?;
-    //         println!("{}, {}", key, value)
-    //     }
-    // }
     Ok(())
 }
 
 #[allow(dead_code)]
 #[allow(unused_doc_comments)]
-fn browse_wikipedia() -> Result<(), Box<dyn Error>> {
+fn check_course() -> Result<(), Box<dyn Error>> {
     let db = sled::open("course_registration_db")?;
     let contents: String = fs::read_to_string("./config.toml")?;
     let config: Config = toml::from_str(&contents)?;
@@ -157,8 +150,7 @@ fn browse_wikipedia() -> Result<(), Box<dyn Error>> {
     tab.wait_for_element(".btn.btn-login.btn-block")?.click()?;
     println!("Logged in as {username}");
 
-    println!("Sleeping for 500milliseconds");
-    std::thread::sleep(std::time::Duration::from_millis(500));
+    thread::sleep(time::Duration::from_millis(500));
 
     tab.wait_until_navigated()?;
 
@@ -174,9 +166,8 @@ fn browse_wikipedia() -> Result<(), Box<dyn Error>> {
         println!("Checking for {} {}", subject, subject_number);
 
         if let Some(details) = get_course_registration_details(&tab, crn)? {
-            println!("{}", details.capacity);
+            println!("Capacity: {}, Actual: {}", details.capacity, details.actual);
             if details.changed(&db, crn)? {
-                println!("New");
                 let RegistrationDetails {
                     capacity: new_capacity,
                     actual: new_actual,
@@ -184,7 +175,7 @@ fn browse_wikipedia() -> Result<(), Box<dyn Error>> {
                 } = details;
 
                 let message = format!(
-                        "Course Seat has changed since last time\nAfter: Capacity={new_capacity}, Actual={new_actual}, Remaining={new_remaining}"
+                        "{subject} {subject_number} Seat has changed since last time\nCapacity={new_capacity}, Actual={new_actual}, Remaining={new_remaining}"
                     );
                 let _ = send_message(&message);
             } else {
@@ -195,31 +186,17 @@ fn browse_wikipedia() -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
-fn main() {
-    // Scheduler, and trait for .seconds(), .minutes(), etc.
-    use clokwerk::{Scheduler, TimeUnits};
-    // Import week days and WeekDay
-    use clokwerk::Interval::*;
-    use std::thread;
-    use std::time::Duration;
-
-    // Create a new scheduler
+fn main() -> Result<(), Box<dyn Error>> {
+    let _ = check_course();
     let mut scheduler = Scheduler::new();
-    // or a scheduler with a given timezone
-    // Add some tasks to it
-    scheduler
-        .every(1.minutes())
-        .run(|| println!("Periodic task"));
-    scheduler.every(1.day()).run(|| println!("Daily task"));
-    scheduler.every(Tuesday).run(|| println!("Biweekly task"));
+    scheduler.every(6.seconds()).run(|| {
+        if let Err(e) = check_course() {
+            println!("Failed: {:?}", e);
+        }
+    });
 
-    // Manually run the scheduler in an event loop
-    for _ in 1..10 {
+    loop {
         scheduler.run_pending();
-        thread::sleep(Duration::from_millis(10));
+        thread::sleep(Duration::from_millis(100));
     }
-    // Or run it in a background thread
-    let thread_handle = scheduler.watch_thread(Duration::from_millis(100));
-    // The scheduler stops when `thread_handle` is dropped, or `stop` is called
-    thread_handle.stop();
 }

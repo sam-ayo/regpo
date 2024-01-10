@@ -8,6 +8,7 @@ pub struct RegistrationDetails {
     pub actual: u8,
     pub remaining: u8,
 }
+
 impl RegistrationDetails {
     pub fn new(capacity: u8, actual: u8, remaining: u8) -> Self {
         RegistrationDetails {

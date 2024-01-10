@@ -1,0 +1,13 @@
+password = ""  
+username = "" 
+term = "" # For example for courses in winter 2024 or Fall 2023 term will be 202302 202301 respectively
+
+[[course]] 
+crn = "98133" # Course CRN on self service
+number = "2600" # subject name for COMP
+subject = "BUSI" # Course number for example 4304
+
+[[course]] 
+crn = "98322"
+number = "4304"
+subject = "COMP"
