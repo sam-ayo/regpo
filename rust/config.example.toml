@@ -1,6 +1,6 @@
 password = ""  
 username = "" 
-term = "" # For example for courses in winter 2024 or Fall 2023 term will be 202302 202301 respectively
+term = "" # For example for courses in Fall 2023 or Winter 2024 term will be 202301 and 202302 respectively
 
 [[course]] 
 crn = "98133" # Course CRN on self service
