@@ -6,4 +6,6 @@ Go to [Twilio](https://www.twilio.com/en-us) and open an account for sms notific
 
 Navigate to the rust directory `cd rust`
 
+Install dependecies `cargo install --path .`
+
 Start the job `cargo run`
